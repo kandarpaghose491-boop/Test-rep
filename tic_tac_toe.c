@@ -5,6 +5,7 @@ int win_check(int player){
 }
 int main(){
     printf("Hello World");
-    printf("A");
+    printf("Abcd");
+
         return 0;
 }
