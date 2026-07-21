@@ -14,8 +14,24 @@ if (board[2]==player&& board[4]==player&& board[6]==player){return player;}
 return -1;
 }
 int main(){
-    printf("Hello World");
-    printf("Abcd");
+    int board[9]={0},a;
+    for (int i = 0; i < 5; i++)
+    {
+        printf("enter the location :- ");
+        scanf("%d",&a);
+        if (a<0 || a>9 || board[a]!=0 )
+        {
+            printf("this location is not allowed \n");
+            i--;
+            continue;
+        }
+        else {
+            board[a]=1;
+        }
 
-        return 0;
+    }
+        
+
+    
+     return 0;
 }
