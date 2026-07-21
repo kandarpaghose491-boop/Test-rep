@@ -1,5 +1,5 @@
 #include <stdio.h>
-int board[8];
+int board[9];
 int win_check(int player){
 if (board[0]==player&& board[3]==player&& board[6]==player){return player;}
 if (board[1]==player&& board[4]==player&& board[7]==player){return player;}
