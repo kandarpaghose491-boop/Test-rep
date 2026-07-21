@@ -1,18 +1,17 @@
 #include <stdio.h>
+int board[8];
+int win_check(int player){
+if (board[0]==player&& board[3]==player&& board[6]==player){return player;}
+if (board[1]==player&& board[4]==player&& board[7]==player){return player;}
+if (board[2]==player&& board[5]==player&& board[8]==player){return player;}
 
-int win_check(int a[9], int b){
+if (board[0]==player&& board[1]==player&& board[2]==player){return player;}
+if (board[3]==player&& board[4]==player&& board[5]==player){return player;}
+if (board[6]==player&& board[7]==player&& board[8]==player){return player;}
 
-if (a[0]==b && a[3]==b && a[6]==b){return 1;}
-if (a[1]==b && a[4]==b && a[7]==b){return 1;}
-if (a[2]==b && a[5]==b && a[8]==b){return 1;}
-
-if (a[0]==b && a[1]==b && a[2]==b){return 1;}
-if (a[3]==b && a[4]==b && a[5]==b){return 1;}
-if (a[6]==b && a[7]==b && a[8]==b){return 1;}
-
-if (a[0]==b && a[4]==b && a[8]==b){return 1;}
-if (a[2]==b && a[4]==b && a[6]==b){return 1;}
-return 0;
+if (board[0]==player&& board[4]==player&& board[8]==player){return player;}
+if (board[2]==player&& board[4]==player&& board[6]==player){return player;}
+return -1;
 }
 int main(){
     printf("Hello World");
