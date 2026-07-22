@@ -1,22 +1,18 @@
 #include <stdio.h>
-int board[9]={0};
-int draw_check(){
-    int count=0;
+int board[9]={2,1,2,1,2,1,2,2};
+int draw(){
     for (int i = 0; i < 9; i++)
     {
         if (board[i]==0)
         {
-            count +=1;            
+            return 0;          
         }
         
-    }
-        if (count<1)
-        {
-            return 1;
-        } 
-        return 0;   
+    } 
+        return 1;   
 }
 int get_result(int player){
+if(draw()){return 0;}
 if (board[0]==player&& board[3]==player&& board[6]==player){return player;}
 if (board[1]==player&& board[4]==player&& board[7]==player){return player;}
 if (board[2]==player&& board[5]==player&& board[8]==player){return player;}
@@ -60,7 +56,7 @@ int main(){
         }
     }
      board_print();   
-
+    printf("Result: %d",result);
     
      return 0;
 }
