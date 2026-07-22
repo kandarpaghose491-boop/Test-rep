@@ -1,10 +1,10 @@
 #include <stdio.h>
-int board[9];
-int draw_check(int a[]){
+int board[9]={0};
+int draw_check(){
     int count=0;
     for (int i = 0; i < 9; i++)
     {
-        if (a[i]==0)
+        if (board[i]==0)
         {
             count +=1;            
         }
@@ -16,7 +16,7 @@ int draw_check(int a[]){
         } 
         return 0;   
 }
-int win_check(int player){
+int get_result(int player){
 if (board[0]==player&& board[3]==player&& board[6]==player){return player;}
 if (board[1]==player&& board[4]==player&& board[7]==player){return player;}
 if (board[2]==player&& board[5]==player&& board[8]==player){return player;}
@@ -29,24 +29,37 @@ if (board[0]==player&& board[4]==player&& board[8]==player){return player;}
 if (board[2]==player&& board[4]==player&& board[6]==player){return player;}
 return -1;
 }
+void board_print(){
+    char obj[]={' ','X','O'};
+    for(int i=1;i<10;i++){
+        printf("[%c]",obj[board[i-1]]);
+        if(i%3==0){
+            printf("\n");
+        }
+    }
+}
 int main(){
-    int board[9]={0},a;
-    for (int i = 0; i < 5; i++)
+    int input;
+    int result=-1;
+    while (result==-1)
     {
+        board_print();
         printf("enter the location :- ");
-        scanf("%d",&a);
-        if (a<0 || a>9 || board[a]!=0 )
+        scanf("%d",&input);
+        if (input<1 || input>10 || board[input-1]!=0 )
         {
             printf("this location is not allowed \n");
-            i--;
             continue;
         }
         else {
-            board[a]=1;
+            board[input-1]=1;
         }
-
+        result=get_result(1);
+        if(result!=-1){
+            break;
+        }
     }
-        
+     board_print();   
 
     
      return 0;
