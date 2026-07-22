@@ -1,5 +1,6 @@
 #include <stdio.h>
-int board[9]={2,1,2,1,2,1,2,2};
+#include "misc.h"
+int board[9]={0};
 int draw(){
     for (int i = 0; i < 9; i++)
     {
@@ -34,11 +35,24 @@ void board_print(){
         }
     }
 }
+int get_empty(int *emp){
+    int len=0;
+for (int i=0;i<9;i++){
+    if(board[i]==0){
+        (*emp)=i;
+        emp++;
+        len++;
+    }
+}
+return len;
+}
 int main(){
+    srand(time(NULL));
     int input;
     int result=-1;
     while (result==-1)
     {
+            int empty[8];
         board_print();
         printf("enter the location :- ");
         scanf("%d",&input);
@@ -54,6 +68,11 @@ int main(){
         if(result!=-1){
             break;
         }
+        int len=get_empty(empty);
+        // printf("%d\n",len);
+        int move=rand_choice_int(empty,len); //random move for testing
+        board[move]=2;
+        result=get_result(2);
     }
      board_print();   
     printf("Result: %d",result);
