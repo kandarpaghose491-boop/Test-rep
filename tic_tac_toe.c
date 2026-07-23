@@ -13,7 +13,7 @@ int draw(){
         return 1;   
 }
 int get_result(int player){
-if(draw()){return 0;}
+if (draw()){return 0;}
 if (board[0]==player&& board[3]==player&& board[6]==player){return player;}
 if (board[1]==player&& board[4]==player&& board[7]==player){return player;}
 if (board[2]==player&& board[5]==player&& board[8]==player){return player;}
@@ -45,6 +45,34 @@ for (int i=0;i<9;i++){
     }
 }
 return len;
+}
+int best_move(){
+    int best_moove;
+    for (int i = 0; i < 9; i++)
+    {
+        // board[i]=2;
+        if (board[i]==0)
+        {
+            board[i]=1;
+        }
+        if (get_result(1)==1)
+        {
+            best_moove = i;
+            return i;
+        }
+        
+        if (board[i]==0)
+        {
+            board[i]=2;
+        }
+        if (get_result(2)==2)
+        {
+            best_moove = i;
+            return best_moove;
+        }
+                
+    }
+    return 0;        
 }
 int main(){
     srand(time(NULL));
