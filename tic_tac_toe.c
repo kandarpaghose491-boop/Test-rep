@@ -47,7 +47,8 @@ for (int i=0;i<9;i++){
 return len;
 }
 int best_move(){
-    int best_moove;
+    int buffer[9];
+    arrycpy(buffer,board,9);
     for (int i = 0; i < 9; i++)
     {
         // board[i]=2;
@@ -57,7 +58,7 @@ int best_move(){
         }
         if (get_result(1)==1)
         {
-            best_moove = i;
+            arrycpy(board,buffer,9);
             return i;
         }
         
@@ -67,12 +68,12 @@ int best_move(){
         }
         if (get_result(2)==2)
         {
-            best_moove = i;
-            return best_moove;
+            arrycpy(board,buffer,9);
+            return i;
         }
                 
     }
-    return 0;        
+    return -1;        
 }
 int main(){
     srand(time(NULL));
@@ -98,7 +99,10 @@ int main(){
         }
         int len=get_empty(empty);
         // printf("%d\n",len);
-        int move=rand_choice_int(empty,len); //random move for testing
+        int move=best_move(); 
+        if (move==-1){
+            move=rand_choice_int(empty,len);
+        }//random move for testing
         board[move]=2;
         result=get_result(2);
     }
